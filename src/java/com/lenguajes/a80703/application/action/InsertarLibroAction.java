@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.lenguajes.a80703.application.action;
 
 import com.lenguajes.a80703.business.AutorBusiness;
@@ -22,13 +21,13 @@ import org.apache.struts2.interceptor.ServletRequestAware;
  *
  * @author Carlos
  */
-public class InsertarLibroAction extends ActionSupport implements Preparable, ModelDriven<Libro>, ServletRequestAware{
-   
+public class InsertarLibroAction extends ActionSupport implements Preparable, ModelDriven<Libro>, ServletRequestAware {
+
     private LinkedList<Autor> autoresDisponibles;
     private LinkedList<Publicador> publicadores;
     private Libro libro;
     private HttpServletRequest request;
-    
+
     @Override
     public String execute() throws Exception {
         return INPUT;
@@ -38,20 +37,36 @@ public class InsertarLibroAction extends ActionSupport implements Preparable, Mo
     public void prepare() throws Exception {
         publicadores = new PublicadorBusiness().getPublicadores();
         autoresDisponibles = new AutorBusiness().getAutores();
-        libro = new Libro();        
+        libro = new Libro();
     }
-    
-    public String salvar(){        
+
+    public String salvar() {
         return INPUT;
     }
-    
-    public String incluirAutor(){
-        request.getParameter("codAutor");
-        
+
+    public String incluirAutor() {
+        int i = 0;
+        while (i < autoresDisponibles.size()) {
+            if (autoresDisponibles.get(i).getCodAutor() == Integer.parseInt(request.getParameter("codAutor"))) {
+                libro.getAutores().add(autoresDisponibles.get(i));
+                autoresDisponibles.remove(i);
+                break;
+            }//if
+            i++;
+        }//for
         return INPUT;
     }
-    
-    public String excluirAutor(){
+
+    public String excluirAutor() {
+        int i = 0;
+        while (i < libro.getAutores().size()) {
+            if (libro.getAutores().get(i).getCodAutor() == Integer.parseInt(request.getParameter("codAutor"))) {
+                autoresDisponibles.add(libro.getAutores().get(i));
+                libro.getAutores().remove(i);
+                break;
+            }//if
+            i++;
+        }//for
         return INPUT;
     }
 
@@ -76,5 +91,5 @@ public class InsertarLibroAction extends ActionSupport implements Preparable, Mo
     public void setServletRequest(HttpServletRequest hsr) {
         request = hsr;
     }
-    
+
 }

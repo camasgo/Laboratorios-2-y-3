@@ -19,8 +19,10 @@
             <s:textfield name="anoPublicacion" label="Año"/>
             <s:select name="publicador.nombrePublicador" list="publicadores" listKey="codPublicador" listValue="nombrePublicador" label="Publicador"/>
             <s:textfield name="isbn" label="ISBN"/>                        
-            <s:select name="autor.nombreAutor" list="libro.autores" multiple="true"></s:select>            
-            <s:select name="autor.nombreAutor" list="autoresDisponibles" multiple="true"></s:select>
+            <s:select name="autor.nombreAutor" list="autoresDisponibles" multiple="true" listKey="codAutor" listValue="%{apellidosAutor + ', ' + nombreAutor}"></s:select>            
+            <s:submit method="incluirAutor" value=">>"/>
+            <s:submit method="excluirAutor" value="<<"/>
+            <s:select name="autor.nombreAutor" list="libro.autores" multiple="true" listKey="codAutor" listValue="%{apellidosAutor + ', ' + nombreAutor}"></s:select>
         </s:form>
     </body>
 </html>
