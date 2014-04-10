@@ -5,6 +5,12 @@
 <struts>
     <include file="example.xml"/>
     <!-- Configuration for the default package. -->
-    <package name="default" extends="struts-default">
+    <package name="default" extends="struts-default" namespace="/">
+        <action name="InsertarLibroInit" class="com.lenguajes.a80703.application.action.InsertarLibroAction">
+            <result name="input" type="dispatcher">insertarLibro.jsp</result>
+        </action>
+        <action name="InsertarLibro" method="salvar" class="com.lenguajes.a80703.application.action.InsertarLibroAction">
+            <result name="input" type="dispatcher">insertarLibro.jsp</result>
+        </action>
     </package>
 </struts>

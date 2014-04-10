@@ -29,20 +29,20 @@ public class LibroData extends BaseData {
             String sqlInsertLibro = "{CALL insertar_libro(?,?,?,?,?,?)}";
             CallableStatement stmtLibro = con.prepareCall(sqlInsertLibro);
             
-            stmtLibro.registerOutParameter("1", Types.INTEGER);
-            stmtLibro.setInt("2", libro.getPublicador().getCodPublicador());
-            stmtLibro.setString("3", libro.getTituloLibro());
-            stmtLibro.setInt("4", libro.getAnoPublicacion());
-            stmtLibro.setString("5", libro.getIsbn());
-            stmtLibro.setFloat("6", libro.getPrecio());
+            stmtLibro.registerOutParameter(1, Types.INTEGER);
+            stmtLibro.setInt(2, libro.getPublicador().getCodPublicador());
+            stmtLibro.setString(3, libro.getTituloLibro());
+            stmtLibro.setInt(4, libro.getAnoPublicacion());
+            stmtLibro.setString(5, libro.getIsbn());
+            stmtLibro.setFloat(6, libro.getPrecio());
             stmtLibro.executeUpdate();
             libro.setNumLibro(stmtLibro.getInt("1"));
             
             for (Autor autor : libro.getAutores()) {
                 String sqlInsertAutor = "{CALL insertar_libro_autor(?,?)}";
                 CallableStatement stmtAutor = con.prepareCall(sqlInsertAutor);
-                stmtAutor.setInt("1", libro.getNumLibro());
-                stmtAutor.setInt("2", autor.getCodAutor());
+                stmtAutor.setInt(1, libro.getNumLibro());
+                stmtAutor.setInt(2, autor.getCodAutor());
                 stmtAutor.executeUpdate();
                 
             }

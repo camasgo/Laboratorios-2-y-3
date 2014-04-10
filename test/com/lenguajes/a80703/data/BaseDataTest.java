@@ -5,7 +5,6 @@
  */
 package com.lenguajes.a80703.data;
 
-
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;

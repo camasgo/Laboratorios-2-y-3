@@ -19,12 +19,10 @@ public class BaseData {
     }
 
     public Connection getConnection() throws SQLException {
-
         String driverName = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
         String url = "jdbc:sqlserver://localhost;"
                     + "databaseName=BookStore;"
-//                    + "user=lenguajes;password=lenguajes;";
-                    +"integratedSecurity=true;";
+                    + "user=lenguajes;password=lenguajes;";
 
         try {
             Class.forName(driverName);
