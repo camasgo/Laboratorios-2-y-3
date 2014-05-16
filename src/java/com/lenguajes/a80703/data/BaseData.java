@@ -20,8 +20,10 @@ public class BaseData {
 
     public Connection getConnection() throws SQLException {
         String driverName = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-        String url = "jdbc:sqlserver://10.155.7.170;"
-                    + "databaseName=BookStoreA80703;"
+//        String url = "jdbc:sqlserver://10.155.7.170;"
+          String url = "jdbc:sqlserver://localhost;"
+//                    + "databaseName=BookStoreA80703;"
+                    + "databaseName=BookStore;"
                     + "user=lenguajes;password=lenguajes;";
 
         try {

@@ -41,32 +41,36 @@ public class InsertarLibroAction extends ActionSupport implements Preparable, Mo
     }
 
     public String salvar() {
+        System.out.println("Salvar");
+        
         return INPUT;
     }
 
     public String incluirAutor() {
-        int i = 0;
-        while (i < autoresDisponibles.size()) {
-            if (autoresDisponibles.get(i).getCodAutor() == Integer.parseInt(request.getParameter("codAutor"))) {
-                libro.getAutores().add(autoresDisponibles.get(i));
-                autoresDisponibles.remove(i);
-                break;
-            }//if
-            i++;
-        }//for
+        System.out.println("Incluir");
+//        int i = 0;
+//        while (i < autoresDisponibles.size()) {
+//            if (autoresDisponibles.get(i).getCodAutor() == Integer.parseInt(request.getParameter("codAutor"))) {
+//                libro.getAutores().add(autoresDisponibles.get(i));
+//                autoresDisponibles.remove(i);
+//                break;
+//            }//if
+//            i++;
+//        }//for
         return INPUT;
     }
 
     public String excluirAutor() {
-        int i = 0;
-        while (i < libro.getAutores().size()) {
-            if (libro.getAutores().get(i).getCodAutor() == Integer.parseInt(request.getParameter("codAutor"))) {
-                autoresDisponibles.add(libro.getAutores().get(i));
-                libro.getAutores().remove(i);
-                break;
-            }//if
-            i++;
-        }//for
+        System.out.println("Excluir");
+//        int i = 0;
+//        while (i < libro.getAutores().size()) {
+//            if (libro.getAutores().get(i).getCodAutor() == Integer.parseInt(request.getParameter("codAutor"))) {
+//                autoresDisponibles.add(libro.getAutores().get(i));
+//                libro.getAutores().remove(i);
+//                break;
+//            }//if
+//            i++;
+//        }//for
         return INPUT;
     }
 

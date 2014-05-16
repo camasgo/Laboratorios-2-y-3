@@ -14,15 +14,16 @@
     </head>
     <body>
         <h1>Insertar un nuevo libro</h1>
-        <s:form action="insertarLibro" method="get">
+        <s:form  action="InsertarLibroSalvar" method="post">
             <s:textfield name="titulo" label="Título"/>
             <s:textfield name="anoPublicacion" label="Año"/>
-            <s:select name="publicador.nombrePublicador" list="publicadores" listKey="codPublicador" listValue="nombrePublicador" label="Publicador"/>
+            <s:select name="nombrePublicador" list="publicadores" listKey="codPublicador" listValue="nombrePublicador" label="Publicador"/>
             <s:textfield name="isbn" label="ISBN"/>                        
-            <s:select name="autor.nombreAutor" list="autoresDisponibles" multiple="true" listKey="codAutor" listValue="%{apellidosAutor + ', ' + nombreAutor}"></s:select>            
-            <s:submit method="incluirAutor" value=">>"/>
-            <s:submit method="excluirAutor" value="<<"/>
-            <s:select name="autor.nombreAutor" list="libro.autores" multiple="true" listKey="codAutor" listValue="%{apellidosAutor + ', ' + nombreAutor}"></s:select>
+            <s:select name="nombreAutor" list="autoresDisponibles" multiple="true" listKey="codAutor" listValue="%{apellidosAutor + ', ' + nombreAutor}"></s:select>            
+            <s:submit type="submit" action="InsertarLibroIncluir" value=">>" />
+            <s:submit type="submit" action="InsertarLibroExcluir" value="<<"/>
+            <s:select name="nombreAutor" list="libro.autores" multiple="true" listKey="codAutor" listValue="%{apellidosAutor + ', ' + nombreAutor}"></s:select>
+            <s:submit type="submit" value="Insertar Libro"/>
         </s:form>
     </body>
 </html>

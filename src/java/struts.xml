@@ -9,8 +9,18 @@
         <action name="InsertarLibroInit" class="com.lenguajes.a80703.application.action.InsertarLibroAction">
             <result name="input" type="dispatcher">insertarLibro.jsp</result>
         </action>
-        <action name="InsertarLibro" method="salvar" class="com.lenguajes.a80703.application.action.InsertarLibroAction">
+        <action name="InsertarLibro" class="com.lenguajes.a80703.application.action.InsertarLibroAction">
             <result name="input" type="dispatcher">insertarLibro.jsp</result>
         </action>
+        <action name="InsertarLibroSalvar" method="salvar" class="com.lenguajes.a80703.application.action.InsertarLibroAction">
+            <result name="success" type="dispatcher">insertarLibro.jsp</result>
+        </action>
+        <action name="InsertarLibroExcluir" method="incluirAutor" class="com.lenguajes.a80703.application.action.InsertarLibroAction">
+            <result name="input" type="dispatcher">insertarLibro.jsp</result>
+        </action>
+        <action name="InsertarLibroIncluir" method="exlcuirAutor" class="com.lenguajes.a80703.application.action.InsertarLibroAction">
+            <result name="input" type="dispatcher">insertarLibro.jsp</result>
+        </action>        
+        
     </package>
 </struts>
