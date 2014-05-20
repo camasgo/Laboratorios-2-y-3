@@ -12,15 +12,21 @@
         <action name="InsertarLibro" class="com.lenguajes.a80703.application.action.InsertarLibroAction">
             <result name="input" type="dispatcher">insertarLibro.jsp</result>
         </action>
-        <action name="InsertarLibroSalvar" method="salvar" class="com.lenguajes.a80703.application.action.InsertarLibroAction">
-            <result name="success" type="dispatcher">insertarLibro.jsp</result>
+        <action name="MantenerAutores" class="com.lenguajes.a80703.application.action.MantenimientoAutoresAction">
+            <result name="input" type="dispatcher">mantenimientoAutores.jsp</result>
         </action>
-        <action name="InsertarLibroExcluir" method="incluirAutor" class="com.lenguajes.a80703.application.action.InsertarLibroAction">
-            <result name="input" type="dispatcher">insertarLibro.jsp</result>
+        <action name="EditarAutor" class="com.lenguajes.a80703.application.action.EditarAutorAction">
+            <result name="input" type="dispatcher">editarAutor.jsp</result>
         </action>
-        <action name="InsertarLibroIncluir" method="exlcuirAutor" class="com.lenguajes.a80703.application.action.InsertarLibroAction">
-            <result name="input" type="dispatcher">insertarLibro.jsp</result>
+        <action name="GuardarAutor" method="editar" class="com.lenguajes.a80703.application.action.EditarAutorAction">
+            <result name="input" type="dispatcher">editarAutor.jsp</result>
+            <result name="success" type="dispatcher">exito.jsp</result>
+            <result name="error" type="dispatcher">error.jsp</result>
         </action>        
-        
+        <action name="EliminarAutor" class="com.lenguajes.a80703.application.action.EliminarAutorAction">
+            <result name="input" type="dispatcher">eliminarAutor.jsp</result>
+            <result name="success" type="dispatcher">exito.jsp</result>
+            <result name="error" type="dispatcher">error.jsp</result>
+        </action>        
     </package>
 </struts>
