@@ -50,7 +50,7 @@ public class EditarAutorAction extends ActionSupport implements Preparable, Mode
 
     @Override
     public Autor getModel() {
-        return autor;
+        return autor;   
     }
 
     @Override

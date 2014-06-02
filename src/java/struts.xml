@@ -35,6 +35,6 @@
             <result name="input" type="dispatcher">eliminarAutor.jsp</result>
             <result name="success" type="dispatcher">exito.jsp</result>
             <result name="error" type="dispatcher">error.jsp</result>
-        </action>        
+        </action>  
     </package>
 </struts>
