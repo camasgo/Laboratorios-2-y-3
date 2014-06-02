@@ -1,4 +1,5 @@
-
+USE BookStore
+GO
 CREATE PROCEDURE sp_editar_autor
 (
 	@cod_autor int,

@@ -27,7 +27,8 @@ public class Libro {
         autores = new LinkedList<Autor>();
     }
 
-    public Libro(int numLibro, String tituloLibro, int anoPublicacion, String isbn, float precio, Publicador publicador, LinkedList<Autor> autores) {
+    public Libro(int numLibro, String tituloLibro, int anoPublicacion, String isbn, float precio, Publicador publicador,
+            LinkedList<Autor> autores) {
         this.numLibro = numLibro;
         this.tituloLibro = tituloLibro;
         this.anoPublicacion = anoPublicacion;

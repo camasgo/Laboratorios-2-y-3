@@ -19,6 +19,12 @@ public class Autor {
     public Autor() {
     }
 
+    public Autor(int codAutor, String nombreAutor, String apellidosAutor) {
+        this.codAutor = codAutor;
+        this.nombreAutor = nombreAutor;
+        this.apellidosAutor = apellidosAutor;
+    }
+    
     public int getCodAutor() {
         return codAutor;
     }

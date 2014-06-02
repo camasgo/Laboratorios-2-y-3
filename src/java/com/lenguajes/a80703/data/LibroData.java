@@ -35,8 +35,9 @@ public class LibroData extends BaseData {
             stmtLibro.setInt(4, libro.getAnoPublicacion());
             stmtLibro.setString(5, libro.getIsbn());
             stmtLibro.setFloat(6, libro.getPrecio());
-            stmtLibro.executeUpdate();
-            libro.setNumLibro(stmtLibro.getInt("1"));
+            stmtLibro.execute();
+            libro.setNumLibro(stmtLibro.getInt(1));
+            System.out.println(libro.getNumLibro());
             
             for (Autor autor : libro.getAutores()) {
                 String sqlInsertAutor = "{CALL insertar_libro_autor(?,?)}";

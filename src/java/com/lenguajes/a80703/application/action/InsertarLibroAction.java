@@ -6,6 +6,7 @@
 package com.lenguajes.a80703.application.action;
 
 import com.lenguajes.a80703.business.AutorBusiness;
+import com.lenguajes.a80703.business.LibroBusiness;
 import com.lenguajes.a80703.business.PublicadorBusiness;
 import com.lenguajes.a80703.dominio.Autor;
 import com.lenguajes.a80703.dominio.Libro;
@@ -13,20 +14,21 @@ import com.lenguajes.a80703.dominio.Publicador;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.LinkedList;
-import javax.servlet.http.HttpServletRequest;
-import org.apache.struts2.interceptor.ServletRequestAware;
+import java.util.List;
 
 /**
  *
  * @author Carlos
  */
-public class InsertarLibroAction extends ActionSupport implements Preparable, ModelDriven<Libro>, ServletRequestAware {
+public class InsertarLibroAction extends ActionSupport implements Preparable, ModelDriven<Libro> {
 
     private LinkedList<Autor> autoresDisponibles;
     private LinkedList<Publicador> publicadores;
+    private List<String> autoresSel = new ArrayList<String>();
     private Libro libro;
-    private HttpServletRequest request;
 
     @Override
     public String execute() throws Exception {
@@ -41,36 +43,48 @@ public class InsertarLibroAction extends ActionSupport implements Preparable, Mo
     }
 
     public String salvar() {
-        System.out.println("Salvar");
-        
-        return INPUT;
+        String valor;
+        try {
+            LibroBusiness lb = new LibroBusiness();
+            lb.insertarLibro(libro);
+            valor = SUCCESS;            
+        } catch (SQLException ex) {
+            valor = ERROR;
+        }
+        return valor;
     }
 
     public String incluirAutor() {
-        System.out.println("Incluir");
-//        int i = 0;
-//        while (i < autoresDisponibles.size()) {
-//            if (autoresDisponibles.get(i).getCodAutor() == Integer.parseInt(request.getParameter("codAutor"))) {
-//                libro.getAutores().add(autoresDisponibles.get(i));
-//                autoresDisponibles.remove(i);
-//                break;
-//            }//if
-//            i++;
-//        }//for
+        int i = 0;
+        while (i < autoresSel.size()) {
+            int j = 0;
+            while (j < autoresDisponibles.size()) {
+                if (autoresDisponibles.get(j).getCodAutor() == Integer.parseInt(autoresSel.get(i))) {
+                    libro.getAutores().add(autoresDisponibles.get(j));
+                    autoresDisponibles.remove(j);
+                    break;
+                }//if
+                j++;
+            }
+            i++;
+        }//for
         return INPUT;
     }
 
     public String excluirAutor() {
-        System.out.println("Excluir");
-//        int i = 0;
-//        while (i < libro.getAutores().size()) {
-//            if (libro.getAutores().get(i).getCodAutor() == Integer.parseInt(request.getParameter("codAutor"))) {
-//                autoresDisponibles.add(libro.getAutores().get(i));
-//                libro.getAutores().remove(i);
-//                break;
-//            }//if
-//            i++;
-//        }//for
+        int i = 0;
+        while (i < autoresSel.size()) {
+            int j = 0;
+            while (j < libro.getAutores().size()) {
+                if (libro.getAutores().get(j).getCodAutor() == Integer.parseInt(autoresSel.get(i))) {
+                    autoresDisponibles.add(libro.getAutores().get(j));
+                    libro.getAutores().remove(j);
+                    break;
+                }//if
+                j++;
+            }
+            i++;
+        }//for
         return INPUT;
     }
 
@@ -91,9 +105,12 @@ public class InsertarLibroAction extends ActionSupport implements Preparable, Mo
         return libro;
     }
 
-    @Override
-    public void setServletRequest(HttpServletRequest hsr) {
-        request = hsr;
+    public List<String> getAutoresSel() {
+        return autoresSel;
+    }
+
+    public void setAutoresSel(List<String> autoresSel) {
+        this.autoresSel = autoresSel;
     }
 
 }
