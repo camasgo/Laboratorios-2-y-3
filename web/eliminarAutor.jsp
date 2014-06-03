@@ -10,16 +10,21 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title><s:text name="autor.borrado.titulo"/></title>
     </head>
     <body>
-        <h1>Borrado de autores</h1>
-        <s:form action="EliminarAutor" method="eliminar">
-            <s:text name="autor.borrado.identificacion" var="%{autor.codAutor}"/>
-            <s:text name="autor.borrado.nombre" var="%{autor.nombreAutor}+' '+ %{autor.apellidosAutor}"/> 
-        ¿Seguro que desea borrar este autor?
-        <s:submit action="EliminarAutor" value="Borrar"/>
-        <s:submit value="Cancelar"/>
+        <h1><s:text name="autor.borrado.encabezado"/></h1>
+        <s:text name="autor.borrado.identificacion"/>
+        <s:property value="autor.codAutor"/><br>
+        <s:text name="autor.borrado.nombre"/> 
+        <s:property value="autor.nombreAutor"/> <s:property value="autor.apellidosAutor"/><br>
+        <s:property value="autor.borrado.msj_confirmacion="/>
+        <s:form action="BorrarAutor">
+            <s:hidden name="codAutor" value="%{codAutor}"/>
+            <s:submit value="Borrar"/>
+        </s:form>  
+        <s:form action="Cancelar">            
+            <s:submit value="Cancelar"/>
         </s:form>        
     </body>
 </html>

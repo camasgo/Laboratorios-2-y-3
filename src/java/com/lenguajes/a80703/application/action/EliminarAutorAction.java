@@ -21,6 +21,7 @@ public class EliminarAutorAction extends ActionSupport implements Preparable, Se
 
     private Autor autor;
     private HttpServletRequest request;
+    private String codAutor;
 
     @Override
     public void prepare() throws Exception {
@@ -35,9 +36,10 @@ public class EliminarAutorAction extends ActionSupport implements Preparable, Se
 
     public String eliminar() {
         try {
-            AutorBusiness ab = new AutorBusiness();
-            ab.eliminarAutor(autor.getCodAutor());
             
+            AutorBusiness ab = new AutorBusiness();
+            ab.eliminarAutor(Integer.parseInt(codAutor));
+
         } catch (SQLException ex) {
             return ERROR;
         }
@@ -53,4 +55,12 @@ public class EliminarAutorAction extends ActionSupport implements Preparable, Se
         return autor;
     }
 
+    public String getCodAutor() {
+        return codAutor;
+    }
+
+    public void setCodAutor(String codAutor) {
+        this.codAutor = codAutor;
+    }
+    
 }

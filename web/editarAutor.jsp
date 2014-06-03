@@ -15,12 +15,9 @@
     <body>
         <h1>Edici&oacute;n de la informaci&oacute;n del autor:</h1>
         <s:form action="GuardarAutor" method="post">
-            <s:textfield name="codAutor" label="Indentificación" value="%{autor.codAutor}" readonly="true"/>
-            <s:textfield name="nombreAutor" label="Nombre" value="%{autor.nombreAutor}"/>
-            <s:textfield name="apellidosAutor" label="Indentificación" value="%{autor.apellidosAutor}"/>
-            <s:textfield name="codAutor" label="Indentificación" value="#autor.codAutor" readonly="true"/>
-            <s:textfield name="nombreAutor" label="Nombre" value="#autor.nombreAutor"/>
-            <s:textfield name="apellidosAutor" label="Indentificación" value="#autor.apellidosAutor"/>
+            <s:textfield name="codAutor" label="Indentificación" value="%{codAutor}" readonly="true"/>
+            <s:textfield name="nombreAutor" label="Nombre" value="%{nombreAutor}"/>
+            <s:textfield name="apellidosAutor" label="Apellidos" value="%{apellidosAutor}"/>
             <s:submit type="submit" value="Editar"/>
             <s:submit type="button" value="Cancelar"/>
         </s:form>
